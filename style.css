@@ -1,0 +1,1543 @@
+/* --- 1. Global Resets & Base Styles --- */
+/* Applies to all elements on all pages */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base Body Styling (Applies to all pages by default) */
+body {
+    font-family: 'Poppins', sans-serif; /* Your preferred primary font */
+    color: #1a1a1a;
+    min-height: 100vh; /* Ensures body takes at least full viewport height */
+    display: flex; /* Enables flexbox for body */
+    flex-direction: column; /* Stacks children vertically */
+    justify-content: space-between; /* Pushes header to top, footer to bottom, main in between */
+}
+
+/* --- 2. Homepage Specific Styles --- */
+/* These styles will apply when the <body> tag DOES NOT have the 'help-page' class.
+   This is implicitly handled by having 'body.help-page' rules be more specific for the help page. */
+
+/* Homepage Background */
+body:not(.help-page) {
+    background-image: url('./Images/bg.jpg'); /* Your original homepage background */
+    background-size: cover; /* Covers the entire viewport */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Header (General styles for both pages, adjusted by specific selectors below) */
+header {
+    width: 100%; /* Ensure header spans full width */
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between; /* Default for logo & nav links on homepage */
+    align-items: center;
+    position: sticky; /* Makes header stick to the top */
+    top: 0;
+    z-index: 10; /* Ensures header is above other content */
+    /* Add a subtle background to the header if needed for readability over background image */
+    /* background-color: rgba(255, 255, 255, 0.7); */
+}
+
+.logo {
+    width: 230px; /* Size of your logo */
+}
+
+.nav-links a {
+    margin-left: 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    color: #333;
+    font-family: 'Nunito', sans-serif;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background-color: rgba(238, 231, 240, 0.5); /* Soft background for nav links */
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.nav-links a:hover {
+    background-color: #cfa6b4; /* Soft pastel purple on hover */
+    color: rgb(46, 45, 45);
+    border-color: #c89dda;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero Section (Specific to homepage) */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem 2rem;
+    flex-grow: 1; /* Allows hero to take up available vertical space */
+}
+
+.hero-box {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hero-box h2 {
+    font-size: 2rem;
+    color: #191946;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.hero-box p {
+    font-size: 1rem;
+    color: #5b5b5b;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 2rem;
+}
+
+/* Join Button (Specific to homepage) */
+.join-btn {
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
+    border-radius: 25px;
+    border: none;
+    background-color: #8874d1;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.join-btn:hover {
+    background-color: #8267c2;
+}
+
+/* Card Grid (Specific to homepage) */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.card {
+    padding: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card .icon {
+    font-size: 2rem;
+    color: #191946;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Outfit', sans-serif; /* From your original code */
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #444;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* Card Colors (Specific to homepage) */
+.card:nth-child(1) { background-color: #ffe9d6; }
+.card:nth-child(2) { background-color: #e0f7f1; }
+.card:nth-child(3) { background-color: #e3f2fa; }
+.card:nth-child(4) { background-color: #f3eaf7; }
+.card:nth-child(5) { background-color: #fde8ea; }
+.card:nth-child(6) { background-color: #e5f6ed; }
+
+
+/* --- 3. Help Page Specific Styles --- */
+/* These styles will apply when the <body> tag HAS the 'help-page' class. */
+
+body.help-page {
+   background-image: url('./Images/help.jpg'); 
+    background-size: cover; /* Ensures the full image is visible, no cropping */
+    background-color: #fef5e7; /* Fallback background color for areas not covered by 'contain' */
+    align-items: center; /* Centers content horizontally within the flex column */
+    justify-content: flex-start; /* Aligns content to the start (top) of the page for help page */
+}
+
+/* Header adjustments for the help page */
+body.help-page header {
+    justify-content: flex-start; /* Only "Back to Home" button on the left */
+    /* If you want a different header background for help page: */
+    /* background-color: rgba(255, 255, 255, 0.9); */
+}
+
+/* Back to Home Button (Specific to help page's header) */
+.back-button {
+    background-color: #5f8678;
+    color: #71cd93;
+    font-weight: 600;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 25px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #98b9ae;
+}
+
+/* Main container (applies to all pages with main, but crucial for help-page centering) */
+/* This will typically wrap the primary content of any page */
+main {
+    flex-grow: 1; /* Allows main to take up available vertical space between header/footer */
+    display: flex; /* Enables flexbox for main content */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    padding: 1rem; /* Add some padding around the content */
+    width: 100%; /* Ensure main spans full width */
+}
+
+/* --- Help Card Styles (Specific to help page) --- */
+.help-card {
+   
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    padding: 2rem;
+    max-width: 900px; /* Limits the card's overall width */
+    width: 90%; /* Ensures responsiveness */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.8s ease-in;
+
+    /* --- FLEXBOX PROPERTIES FOR STACKING AND CENTERING CHILDREN --- */
+    display: flex; /* Make it a flex container */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Horizontally center ALL direct children (h2, p, and buttons) */
+    gap: 15px; /* Consistent space between all direct child elements */
+    /* Remove text-align: center from here, as align-items: center handles button centering */
+    /* text-align: center; is more for inline content within a block */
+}
+
+/* --- Heading and Paragraph within Help Card --- */
+.help-card h2 {
+    font-size: 1.8rem;
+    color: #191946;
+    margin-bottom: 0; /* Let gap handle spacing */
+    text-align: center; /* Ensure text itself is centered within its own block */
+    width: 100%; /* Ensure heading takes full width for centering */
+}
+
+.help-card p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0; /* Let gap handle spacing */
+    font-family: 'Nunito', sans-serif;
+    text-align: center; /* Ensure text itself is centered within its own block */
+    width: 100%; /* Ensure paragraph takes full width for centering */
+}
+
+/* --- Get Help CTA Button/Link --- */
+.help-card .get-help-cta {
+    display: block; /* Make buttons block-level to occupy full width and stack */
+    width: 100%; /* Take full width of the parent flex container (up to max-width) */
+    max-width: 280px; /* <-- ADJUST THIS VALUE: Increase slightly if buttons look too narrow */
+    /* Remove any inline style overrides from HTML if you haven't already */
+    /* Also ensure no conflicting 'margin' properties here if you're using 'gap' on parent */
+
+    padding: 0.7rem 1.5rem;
+    background-color: #00a77f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    text-align: center; /* Ensure text within the button is centered */
+}
+
+.help-card .get-help-cta:hover {
+    background-color: #008e6c;
+}
+
+
+/* --- 4. Footer --- */
+/* Applies to all pages */
+footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #0b0b0b; /* From your original code */
+    padding: 2rem; /* From your original code */
+    font-family: 'Nunito', sans-serif;
+    width: 100%; /* Ensure footer spans full width */
+}
+
+/* --- 5. Animations --- */
+/* Applies to any element with this animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --- 4. Feeding Map Page Specific Styles --- */
+
+body.feeding-map-page {
+  background: url('./Images/feeding.jpeg');
+    
+    background-color: #fce9d3; /* This is the light orange/peach color you wanted */
+    background-repeat: no-repeat; /* Ensure no repetition if any image was inherited */
+    background-position: center; /* Center any potential background */
+    background-size: cover; /* Cover the page with the background color if no image */
+
+    display: flex; /* Make body a flex container */
+    flex-direction: column; /* Stack children (the .overlay) vertically */
+    align-items: center; /* Center the .overlay horizontally */
+    justify-content: flex-start; /* Align content to the top (adjust if you want vertically centered) */
+    min-height: 100vh; /* Ensure it takes full viewport height */
+    overflow-y: auto; /* Allow scrolling if content exceeds viewport height */
+}
+
+/* The .overlay now serves as the main card for the Feeding Map page */
+body.feeding-map-page .overlay {
+   
+    background-color: rgba(255, 255, 255, 0.7); /* The light, translucent white/greyish card color */
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 900px; /* Adjust max-width as needed for map */
+    width: 90%;
+  
+    margin: 2rem auto; /* Center the overlay and add vertical space */
+    text-align: center; /* Center the text inside */
+    flex-grow: 1; /* Allows the overlay to grow and push the footer down if present */
+    display: flex; /* Make overlay a flex container itself */
+    flex-direction: column; /* Stack its children vertically */
+    align-items: center; /* Center items (h1, p, map-wrapper) horizontally within the overlay */
+    gap: 15px; /* Consistent spacing between elements inside the overlay */
+}
+
+
+/* Specific styling for the back-link on feeding map page */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #794900;
+    font-weight: 600;
+    background-color: #f4bf99;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease, box-shadow 0.2s ease;
+    position: absolute; /* Position relative to the body */
+    top: 1.5rem;
+    left: 2rem;
+    z-index: 20; /* Ensure it's above the overlay */
+}
+
+.back-link:hover {
+    background-color: #d39859;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.back-link .fas {
+    margin-right: 0.3rem;
+}
+
+body.feeding-map-page .overlay h1 {
+    font-size: 2.2rem;
+    color: #6a4728;
+    margin-bottom: 0.8rem; /* Use specific margin here if 'gap' isn't sufficient */
+}
+
+body.feeding-map-page .overlay p {
+    font-size: 1.1rem;
+    color: #5b5b5b;
+    margin-bottom: 1.5rem; /* Use specific margin here if 'gap' isn't sufficient */
+    font-family: 'Nunito', sans-serif;
+    max-width: 600px;
+}
+
+.map-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    margin-top: 1.5rem; /* Space between description and map */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
+/* --- 5. Footer --- */
+/* Applies to all pages */
+footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #5b5b5b; /* Changed to a slightly darker color for visibility */
+    padding: 1rem; /* Reduced padding for help page */
+    font-family: 'Nunito', sans-serif;
+    width: 100%;
+    margin-top: auto; /* Pushes footer to bottom in flex column layout */
+}
+
+/* --- 6. Animations --- */
+/* Applies to any element with this animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --- 5. Shop Page Specific Styles --- */
+/* This will apply when the <body> tag HAS the 'shop-page' class */
+
+body.shop-page {
+     background: url('./Images/shop.jpeg');
+    background-color: #eaf3f9; /* The light blue color from your icon screenshot */
+    
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: flex-start; /* Align content to the top */
+    min-height: 100vh;
+    overflow-y: auto; /* Allow scrolling for product content */
+}
+
+
+
+.shop-content {
+    flex-grow: 1; /* Allows main content to take available vertical space */
+    width: 100%; /* Ensure it spans full width */
+    max-width: 1200px; /* Max width for overall shop content */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items within the shop-content */
+    gap: 2rem; /* Space between intro card and product grid */
+}
+
+.shop-intro-card {
+    background-color: rgba(255, 255, 255, 0.8); /* Translucent white card */
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 700px;
+    width: 100%;
+}
+
+.shop-intro-card h1 {
+    font-size: 2.5rem;
+    color: #191946;
+    margin-bottom: 1rem;
+}
+
+.shop-intro-card p {
+    font-size: 1.1rem;
+    color: #5b5b5b;
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for products */
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: center; /* Center grid items if they don't fill a row */
+}
+
+.product-card {
+    background-color: #ffffff; /* White background for individual product cards */
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Space between elements in product card */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+    width: 100%;
+    max-width: 250px; /* Limit image size */
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 0.5rem; /* Space below image */
+}
+
+.product-card h3 {
+    font-size: 1.3rem;
+    color: #191946;
+    margin-bottom: 0; /* Let gap handle spacing */
+}
+
+.product-description {
+    font-size: 0.95rem;
+    color: #555;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 0; /* Let gap handle spacing */
+}
+
+.product-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #007960; /* A nice green for price */
+    margin-top: 0.5rem; /* Space above price */
+    margin-bottom: 0; /* Let gap handle spacing */
+}
+
+.add-to-cart-btn {
+    background-color: #8874d1; /* A pleasant purple for buttons */
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem; /* Space above button */
+}
+
+.add-to-cart-btn:hover {
+    background-color: #7a63c2;
+}
+
+/* --- Back to Home Button for Shop Page --- */
+/* This rule specifically targets the back-button on the Shop page */
+body.shop-page .back-button {
+    background-color: #c0e0f0; /* A light blue for the button background */
+    color: #191946; /* A dark blue for the text, consistent with your headings */
+    /* Position properties must also be here to override the help-page default */
+    position: absolute; /* IMPORTANT: This makes it more specific */
+    top: 1.5rem;
+    left: 2rem;
+    z-index: 20;
+}
+
+body.shop-page .back-button:hover {
+    background-color: #a0c0e0; /* Slightly darker blue on hover */
+    color: #000; /* Darker text on hover for contrast */
+}
+/* --- END OF BACK BUTTON RULES --- */
+
+/* --- 6. Footer --- */
+/* Applies to all pages */
+footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #5b5b5b; /* Changed to a slightly darker color for visibility */
+    padding: 1rem; /* Reduced padding for help page */
+    font-family: 'Nunito', sans-serif;
+    width: 100%;
+    margin-top: auto; /* Pushes footer to bottom in flex column layout */
+}
+
+/* --- 7. Animations --- */
+/* Applies to any element with this animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* --- 6. Resilience Stories Page Specific Styles --- */
+body.resilience-stories-page {
+    background: url('./Images/rstories.jpeg');
+    background-size: cover;
+    background-color: #f0e6f5; /* Light purple/pink fallback */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.stories-content {
+    flex-grow: 1;
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.stories-intro-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 700px;
+    width: 100%;
+}
+
+.stories-intro-card h1 {
+    font-size: 2.5rem;
+    color: #191946;
+    margin-bottom: 1rem;
+}
+
+.stories-intro-card p {
+    font-size: 1.1rem;
+    color: #5b5b5b;
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.story-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.story-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.story-image {
+    width: 100%;
+    max-width: 300px;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Ensures images cover the area without distortion */
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.story-card h3 {
+    font-size: 1.4rem;
+    color: #191946;
+    margin-bottom: 0;
+}
+
+.story-description {
+    font-size: 0.95rem;
+    color: #555;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 0;
+    flex-grow: 1; /* Allows description to take available space */
+}
+
+.read-more-btn {
+    background-color: #8874d1;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Ensure it looks like a button */
+    display: inline-block; /* For proper padding and alignment */
+    margin-top: 0.5rem;
+}
+
+.read-more-btn:hover {
+    background-color: #7a63c2;
+}
+
+/* --- Back to Home Button for Resilience Stories Page --- */
+body.resilience-stories-page .back-button {
+    background-color: #be99db; /* Light blue */
+    color: #191946; /* Dark blue */
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+    z-index: 20;
+}
+
+body.resilience-stories-page .back-button:hover {
+    background-color: #af8dcb;
+    color: #000;
+}
+
+
+/* --- 7. Footer --- */
+/* Applies to all pages */
+footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #5b5b5b; /* Changed to a slightly darker color for visibility */
+    padding: 1rem; /* Reduced padding for help page */
+    font-family: 'Nunito', sans-serif;
+    width: 100%;
+    margin-top: auto; /* Pushes footer to bottom in flex column layout */
+}
+
+/* --- 8. Animations --- */
+/* Applies to any element with this animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* --- 7. Donate Page Specific Styles --- */
+body.donate-page {
+    background: url('./Images/donate.jpeg');
+    background-size: cover;
+    background-color: #fff0f2; /* Very pale pink, complementing #fde8ea */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.donate-content {
+    flex-grow: 1;
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.donate-intro-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 700px;
+    width: 100%;
+}
+
+.donate-intro-card h1 {
+    font-size: 2.5rem;
+    color: #191946;
+    margin-bottom: 1rem;
+}
+
+.donate-intro-card p {
+    font-size: 1.1rem;
+    color: #5b5b5b;
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+}
+
+.donation-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.donation-card {
+    background-color: #ffffff; /* White background for individual product cards */
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.donation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.donation-card .icon {
+    font-size: 2.5rem;
+    color: #8874d1; /* Purple icon color */
+    margin-bottom: 0.5rem;
+}
+
+.donation-card h3 {
+    font-size: 1.3rem;
+    color: #191946;
+    margin-bottom: 0;
+}
+
+.donation-card p {
+    font-size: 0.95rem;
+    color: #555;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 0;
+    flex-grow: 1;
+}
+
+.donate-button {
+    background-color: #b07cba; /* Green button */
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+    width: 100%; /* Make button full width of card */
+    max-width: 200px; /* Limit button width */
+}
+
+.donate-button:hover {
+    background-color: #864a92;
+}
+
+/* --- Back to Home Button for Donate Page --- */
+body.donate-page .back-button {
+    background-color: #e5a6d7; /* Light pink from homepage card */
+    color: #191946; /* Dark blue */
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+    z-index: 20;
+}
+
+body.donate-page .back-button:hover {
+    background-color: #ebc0e8; /* Slightly darker pink on hover */
+    color: #000;
+}
+
+
+/* --- 8. Footer --- */
+/* Applies to all pages */
+footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #5b5b5b; /* Changed to a slightly darker color for visibility */
+    padding: 1rem; /* Reduced padding for help page */
+    font-family: 'Nunito', sans-serif;
+    width: 100%;
+    margin-top: auto; /* Pushes footer to bottom in flex column layout */
+}
+
+/* --- 9. Animations --- */
+/* Applies to any element with this animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* --- 8. Community Page Specific Styles --- */
+body.community-page {
+ background-image: url('./Images/comm.jpg');;
+    background-size: cover;
+    background-color: #e5f6ed; /* Light green from homepage card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.community-content {
+    flex-grow: 1;
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.community-intro-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 700px;
+    width: 100%;
+}
+
+.community-intro-card h1 {
+    font-size: 2.5rem;
+    color: #274619;
+    margin-bottom: 1rem;
+}
+
+.community-intro-card p {
+    font-size: 1.1rem;
+    color: #5b5b5b;
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+}
+
+.community-section {
+    width: 100%;
+    margin-bottom: 2rem; /* Space between sections */
+}
+
+.community-section h2 {
+    font-size: 2rem;
+    color: #19462d;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.community-events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.event-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.event-image {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.event-card h3 {
+    font-size: 1.3rem;
+    color: #191946;
+    margin-bottom: 0;
+}
+
+.event-description {
+    font-size: 0.95rem;
+    color: #555;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 0;
+    flex-grow: 1;
+}
+
+.event-date {
+    font-size: 0.85rem;
+    color: #777;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 0.5rem;
+}
+
+.event-date .far {
+    margin-right: 0.3rem;
+}
+
+.event-button {
+    background-color: #8874d1; /* A pleasant purple for buttons */
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 200px;
+}
+
+.event-button:hover {
+    background-color: #7a63c2;
+}
+
+/* --- Instagram Pages Grid --- */
+.instagram-pages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.instagram-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.instagram-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.instagram-profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e5f6ed; /* Border color matching community page background */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.instagram-card h3 {
+    font-size: 1.2rem;
+    color: #191946;
+    margin-bottom: 0;
+}
+
+.instagram-card p {
+    font-size: 0.9rem;
+    color: #555;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 0;
+    flex-grow: 1;
+}
+
+.instagram-icon {
+    font-size: 2rem;
+    color: #E1306C; /* Instagram brand color */
+    margin-top: 0.5rem;
+}
+
+
+/* --- Back to Home Button for Community Page --- */
+body.community-page .back-button {
+    background-color: #e5f6ed; /* Light green from homepage card */
+    color: #191946; /* Dark blue */
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+    z-index: 20;
+}
+
+body.community-page .back-button:hover {
+    background-color: #c0e0d0; /* Slightly darker green on hover */
+    color: #000;
+}
+
+
+/* --- 9. Footer --- */
+/* Applies to all pages */
+footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #5b5b5b; /* Changed to a slightly darker color for visibility */
+    padding: 1rem; /* Reduced padding for help page */
+    font-family: 'Nunito', sans-serif;
+    width: 100%;
+    margin-top: auto; /* Pushes footer to bottom in flex column layout */
+}
+
+/* --- 10. Animations --- */
+/* Applies to any element with this animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- 11. Join the Movement Page Specific Styles --- */
+body.join-movement-page {
+    background: url('https://placehold.co/1920x1080/e3f2fa/333333?text=Join+Movement+Background') no-repeat center center fixed; /* Placeholder for join movement page background */
+    background-size: cover;
+    background-color: #e3f2fa; /* Light blue from homepage card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.join-movement-content {
+    flex-grow: 1;
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.join-movement-intro-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 700px;
+    width: 100%;
+}
+
+.join-movement-intro-card h1 {
+    font-size: 2.5rem;
+    color: #191946;
+    margin-bottom: 1rem;
+}
+
+.join-movement-intro-card p {
+    font-size: 1.1rem;
+    color: #5b5b5b;
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+}
+
+.join-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.join-option-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.join-option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.join-option-card .icon {
+    font-size: 2.5rem;
+    color: #8874d1; /* Purple icon color */
+    margin-bottom: 0.5rem;
+}
+
+.join-option-card h3 {
+    font-size: 1.3rem;
+    color: #191946;
+    margin-bottom: 0;
+}
+
+.join-option-card p {
+    font-size: 0.95rem;
+    color: #555;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 0;
+    flex-grow: 1;
+}
+
+.join-option-button {
+    background-color: #a2d7e1; /* Green button */
+    color: rgb(43, 42, 42);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+    width: 100%; /* Make button full width of card */
+    max-width: 200px; /* Limit button width */
+}
+
+.join-option-button:hover {
+    background-color:#7caab3;
+}
+
+/* --- Back to Home Button for Join the Movement Page --- */
+body.join-movement-page .back-button {
+    background-color: #e3f2fa; /* Light blue from homepage card */
+    color: #191946; /* Dark blue */
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+    z-index: 20;
+}
+
+body.join-movement-page .back-button:hover {
+    background-color: #c0d0e0; /* Slightly darker blue on hover */
+    color: #000;
+}
+
+/* --- 12. Modal Overlay and Content Styles (for Sign In/Sign Up) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top of everything */
+    opacity: 0; /* Start hidden */
+    visibility: hidden; /* Start hidden */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    position: relative; /* For positioning the close button */
+    transform: translateY(20px); /* Start slightly off-screen */
+    transition: transform 0.3s ease-in-out;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0); /* Slide into view */
+}
+
+/* Auth Card styles (reused from previous auth pages, now applied to modal-content) */
+.auth-card {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly less transparent for focus */
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow for pop-up */
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    /* Removed animation: fadeIn here as it's handled by modal-content transition */
+}
+
+.auth-card h1 {
+    font-size: 2.2rem;
+    color: #191946;
+    margin-bottom: 0.8rem;
+}
+
+.auth-card p {
+    font-size: 1rem;
+    color: #5b5b5b;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 1.5rem;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Space between form groups */
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    text-align: left;
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    color: #444;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Nunito', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #8874d1;
+    box-shadow: 0 0 0 3px rgba(136, 116, 209, 0.2);
+}
+
+.auth-button {
+    background-color: #8874d1; /* Purple button */
+    color: white;
+    border: none;
+    padding: 0.9rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.auth-button:hover {
+    background-color: #7a63c2;
+    transform: translateY(-2px);
+}
+
+.auth-switch {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.auth-switch a {
+    color: #8874d1; /* Purple link */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.auth-switch a:hover {
+    color: #7a63c2;
+    text-decoration: underline;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover {
+    color: #333;
+}
+
+/* Remove specific auth-page body styles as they are now handled by modal-overlay */
+/* body.auth-page { ... } */
+/* .auth-content { ... } */
+/* .auth-card { ... } */
+/* .auth-card h1 { ... } */
+/* .auth-card p { ... } */
+/* .auth-form { ... } */
+/* .form-group { ... } */
+/* .form-group label { ... } */
+/* .form-group input { ... } */
+/* .form-group input:focus { ... } */
+/* .auth-button { ... } */
+/* .auth-button:hover { ... } */
+/* .auth-switch { ... } */
+/* .auth-switch a { ... } */
+
+/* --- Back to Home Button (General, adjusted for specific pages where needed) --- */
+/* This rule is kept general as it applies to all pages with a back button */
+.back-button {
+    background-color: #d1f3e7; /* Default light green */
+    color: #056444; /* Default dark green */
+    font-weight: 600;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 25px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+    position: absolute; /* Position relative to the body */
+    top: 1.5rem;
+    left: 2rem;
+    z-index: 20; /* Ensure it's above other content, but below modals */
+}
+
+.back-button:hover {
+    background-color: #b2e5d6;
+}
+
+
+/* --- 9. Footer --- */
+/* Applies to all pages */
+footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #5b5b5b; /* Changed to a slightly darker color for visibility */
+    padding: 1rem; /* Reduced padding for help page */
+    font-family: 'Nunito', sans-serif;
+    width: 100%;
+    margin-top: auto; /* Pushes footer to bottom in flex column layout */
+}
+
+/* --- 10. Animations --- */
+/* Applies to any element with this animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* --- Styles for the Chatbot Container (Pop-up Window) --- */
+.chatbot-container {
+    position: fixed;
+    bottom: 20px; /* Adjust as needed */
+    right: 20px;  /* Adjust as needed */
+    width: 350px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+    transform: translateY(120%); /* Start hidden */
+    transition: transform 0.3s ease-in-out;
+}
+
+.chatbot-container.active {
+    transform: translateY(0);
+}
+
+.chatbot-header {
+    background-color: #28a745; /* Green for animal protection */
+    color: white;
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-header h3 {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.chatbot-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.chatbot-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+}
+
+.message {
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background-color: #e0f7fa; /* Light blue for user */
+    align-self: flex-end;
+    margin-left: auto;
+    text-align: right;
+}
+
+.bot-message {
+    background-color: #dcf8c6; /* Light green for bot */
+    align-self: flex-start;
+    text-align: left;
+}
+
+.chatbot-input {
+    display: flex;
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+}
+
+.chatbot-input input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin-right: 10px;
+    outline: none;
+}
+
+.chatbot-input button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+}
+
+.chatbot-input button:hover {
+    background-color: #218838;
+}
+

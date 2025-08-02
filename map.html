@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feeding Map - CareNest</title>
+  <!-- Link to your consolidated CSS file -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts for 'Nunito' and 'Poppins' -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons (like the back arrow) -->
+  <script src="https://kit.fontawesome.com/a2e0b4c6d2.js" crossorigin="anonymous"></script>
+</head>
+<body class="feeding-map-page"> <!-- This class applies the specific background color and layout for this page -->
+
+  <!-- The .overlay div acts as the main content card for this page -->
+  <div class="overlay">
+    <!-- The "Back to Home" link, positioned absolutely via CSS -->
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+    <!-- Page Title -->
+    <h1>Feeding Map</h1>
+    <!-- Page Description -->
+    <p>Use the interactive map below to locate known feeding spots and connect with volunteers in your area who care for stray animals.</p>
+
+    <!-- Map Container -->
+    <div class="map-wrapper">
+      <div class="map-container">
+        <!-- Google Maps Embed Iframe -->
+        <!-- IMPORTANT: Replace the 'src' URL below with your actual Google Maps embed code.
+             To get your embed code:
+             1. Go to Google Maps (maps.google.com).
+             2. Search for your desired location.
+             3. Click the "Share" button (usually an arrow icon).
+             4. Select the "Embed a map" tab.
+             5. Copy the 'src' value from the provided <iframe> code and paste it here.
+             The 'referrerpolicy="no-referrer-when-downgrade"' is a good practice for security. -->
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1dYOUR_LATITUDE!2dYOUR_LONGITUDE!3dYOUR_ZOOM!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQ5JzM0LjMiTiA3N8KwNTUnMjcuOSJF!5e0!3m2!1sen!2sin!4v1678901234567!5m2!1sen!2sin"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional: Footer. You might choose to omit this on a map-focused page
+       if it interferes with the layout or if the map is meant to fill the screen.
+       If included, ensure its CSS allows it to sit at the bottom properly. -->
+  <!-- <footer>
+    <p>&copy; 2025 CareNest. All rights reserved.</p>
+  </footer> -->
+
+</body>
+</html>
