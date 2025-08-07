@@ -1220,6 +1220,7 @@ body.join-movement-page {
 
 /* --- Back to Home Button for Join the Movement Page --- */
 body.join-movement-page .back-button {
+    background image: url('./Images/jtm.png');;
     background-color: #e3f2fa; /* Light blue from homepage card */
     color: #191946; /* Dark blue */
     position: absolute;
